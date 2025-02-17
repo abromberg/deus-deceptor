@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Deus Deceptor",
+  "version": "1.0",
+  "description": "Descartes' Deus Deceptor, as a Chrome extension. Can you really believe your own eyes?",
+  "icons": {
+    "128": "deus_deceptor.png"
+  },
+  "permissions": [
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "options_page": "options.html"
+} 

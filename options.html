@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Deus Deceptor Options</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Configuration options for Deus Deceptor.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+        
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #151520;
+            --text-primary: #c8aa6e;
+            --text-secondary: #964b00;
+            --accent-primary: #6e0b14;
+            --accent-secondary: #8b0000;
+            --success: #2d4a22;
+            --error: #8b0000;
+            --input-bg: #1a1a24;
+            --font-decorative: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(circle at 50% 50%, #1a0f0f 0%, transparent 50%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(110, 11, 20, 0.1) 3px, transparent 3px);
+            color: var(--text-primary);
+            padding: 2rem;
+            font-family: var(--font-decorative);
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        h1, h2 {
+            color: var(--text-primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 
+                0 0 10px rgba(200, 170, 110, 0.5),
+                0 0 20px rgba(110, 11, 20, 0.3);
+        }
+
+        .rule-container {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--accent-primary);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 
+                inset 0 0 10px rgba(110, 11, 20, 0.2),
+                0 0 15px rgba(0, 0, 0, 0.3);
+            padding-right: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"], input[type="password"], select {
+            padding: 0.8rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--accent-primary);
+            border-radius: 0;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            flex: 1;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, select:focus {
+            outline: none;
+            border-color: var(--text-primary);
+            box-shadow: 0 0 15px rgba(110, 11, 20, 0.4);
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+            cursor: pointer;
+            font-family: var(--font-decorative);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(200, 170, 110, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        button:hover::after {
+            left: 100%;
+        }
+
+        button.remove {
+            background-color: var(--accent-secondary);
+        }
+
+        button:hover {
+            background-color: var(--accent-secondary);
+            box-shadow: 0 0 15px rgba(110, 11, 20, 0.6);
+        }
+
+        #rules-container {
+            margin-bottom: 2rem;
+        }
+
+        .status {
+            margin-top: 1rem;
+            padding: 1rem;
+            display: none;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+        }
+
+        .success {
+            background-color: var(--success);
+            color: var(--text-primary);
+        }
+
+        .error {
+            background-color: var(--error);
+            color: var(--text-primary);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23c8aa6e' d='M0 2l4 4 4-4z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 0.65rem;
+            padding-right: 2rem;
+            appearance: none;
+        }
+
+        ::placeholder {
+            color: rgba(200, 170, 110, 0.5);
+        }
+
+        .settings-container {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--accent-primary);
+        }
+
+        .rule-container button {
+            margin-left: 1rem;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--accent-primary);
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+            margin-left: auto;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--accent-primary);
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            color: var(--text-primary);
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        label {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            min-width: 200px;
+        }
+
+        .settings-container .rule-container {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 1rem;
+            max-width: 600px;
+        }
+
+        /* Override for the API key container */
+        .settings-container .rule-container.api-key-container {
+            max-width: none;
+        }
+
+        #apiKey {
+            min-width: 300px;
+            flex: 1;
+        }
+
+        /* Ensure other inputs stay at their current width */
+        .settings-container .rule-container:not(.api-key-container) input[type="password"],
+        .settings-container .rule-container:not(.api-key-container) select {
+            width: 180px;
+            flex: none;
+            margin-left: auto;
+        }
+
+        .settings-container:last-of-type .rule-container,
+        #rules-container .rule-container {
+            max-width: none;
+        }
+
+        .help-text {
+            color: rgba(200, 170, 110, 0.7);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        input[type="text"].subject-input::placeholder {
+            font-style: italic;
+        }
+
+        input[type="text"].subject-input {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .header {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            position: relative;
+        }
+        .header img {
+            width: 128px;
+            height: 128px;
+        }
+        .header h1 {
+            margin: 0;
+            border: none;
+            position: relative;
+        }
+        .header-bar {
+            height: 2px;
+            background: var(--accent-primary);
+            width: 100%;
+            margin: 2rem 0 3rem;
+            box-shadow: 0 0 10px rgba(110, 11, 20, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="deus_deceptor.png" alt="Deus Deceptor" width="128" height="128">
+        <h1>Deus Deceptor Options</h1>
+        <img src="deus_deceptor.png" alt="Deus Deceptor" width="128" height="128">
+    </div>
+    <div class="header-bar"></div>
+    
+    <div class="settings-container">
+        <h2>API Configuration</h2>
+        <div class="rule-container api-key-container">
+            <label for="apiKey">Google Gemini API Key:</label>
+            <input type="password" id="apiKey" placeholder="Enter your Google Gemini API key">
+            <button id="saveApiKey">Save API Key</button>
+        </div>
+
+        <div class="rule-container">
+            <label for="model">Model Selection:</label>
+            <select id="model">
+                <option value="gemini-2.0-flash">gemini-2.0-flash</option>
+                <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+                <option value="gemini-1.5-flash-8b">gemini-1.5-flash-8b</option>
+            </select>
+            <button id="saveModel">Save Model</button>
+        </div>
+    </div>
+
+    <div class="settings-container">
+        <h2>Additional Settings</h2>
+        <div class="rule-container">
+            <label for="similarityThreshold">Text Matching Strictness:</label>
+            <select id="similarityThreshold">
+                <option value="0.95">Very Strict</option>
+                <option value="0.9">Strict</option>
+                <option value="0.75">Moderate</option>
+                <option value="0.65">Relaxed</option>
+                <option value="0.4">Very Relaxed</option>
+            </select>
+        </div>
+
+        <div class="rule-container">
+            <label for="highlightTransformed">Highlight Transformed Text:</label>
+            <input type="checkbox" id="highlightTransformed">
+        </div>
+    </div>
+
+    <div class="settings-container">
+        <h2>Transformation Rules</h2>
+        <div class="help-text">
+            For subjects, you can enter multiple comma-separated values (e.g., "bob, joe, alice"). 
+            The rule will apply if any of these values are matched.
+        </div>
+        <div id="rules-container"></div>
+        <button id="addRule">Add New Rule</button>
+        <button id="saveRules">Save Rules</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <script src="options.js"></script>
+</body>
+</html> 

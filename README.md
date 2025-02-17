@@ -1,5 +1,7 @@
 # Deus Deceptor: Descartes as a Chrome extension
 
+![Deus Deceptor](https://github.com/abromberg/deus-deceptor/blob/master/deus_deceptor_header.png)
+
 > [!CAUTION]
 > I do not recommend using this extension. It is meant as a a proof of concept and a fun experiment. It may send personal data from webpages you visit to Google Gemini. And it may also deceive you. And it may not work as expected.
 
